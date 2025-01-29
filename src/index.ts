@@ -5,7 +5,7 @@ import chalk from 'chalk';
 import { hideBin } from 'yargs/helpers';
 import { scanColors } from './scanner';
 import { replaceColor } from './replacer';
-import { printColorMap, newLineToAddInCss } from './output';
+import { printColorMap, newLineToAddInCss, highlightNumber } from './output';
 import { TAILWIND_DEFAULT_COLORS } from './regexes';
 import { VerboseLevel, VERBOSE_LEVELS } from './types';
 
@@ -136,8 +136,8 @@ yargs(parsedArgs)
 
       console.log(
         dryRun
-          ? `\nWould update ${chalk.yellow.bold(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`
-          : `\nUpdated ${chalk.yellow.bold(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`,
+          ? `\nWould update ${highlightNumber(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`
+          : `\nUpdated ${highlightNumber(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`,
       );
 
       for (const file of visitedFiles) {

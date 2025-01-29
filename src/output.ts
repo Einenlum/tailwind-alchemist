@@ -8,6 +8,10 @@ import {
 } from './types';
 import { TAILWIND_DEFAULT_COLORS } from './regexes';
 
+export function highlightNumber(value: string | number) {
+  return chalk.yellow.bold(value);
+}
+
 function groupBy<T, K extends keyof any>(
   array: T[],
   keyExtractor: (item: T) => K,
@@ -30,7 +34,7 @@ function showSimpleColors(colorMap: ColorMap) {
 
   found.sort();
 
-  console.log(`Found ${chalk.yellow.bold(found.length)} Tailwind colors:\n`);
+  console.log(`Found ${highlightNumber(found.length)} Tailwind colors:\n`);
 
   for (const color of found) {
     console.log(color);
@@ -40,7 +44,7 @@ function showSimpleColors(colorMap: ColorMap) {
 function showColorWithLines(colorMap: ColorMap) {
   const found = Object.keys(colorMap);
 
-  console.log(`Found ${chalk.yellow.bold(found.length)} Tailwind colors:\n`);
+  console.log(`Found ${highlightNumber(found.length)} Tailwind colors:\n`);
 
   for (const color of found) {
     const occurrences = colorMap[color];
@@ -51,7 +55,7 @@ function showColorWithLines(colorMap: ColorMap) {
     );
 
     console.log(
-      `\nColor: ${color} (${chalk.yellow.bold(occurrences.length)} occurrence${occurrences.length > 1 ? 's' : ''})`,
+      `\nColor: ${color} (${highlightNumber(occurrences.length)} occurrence${occurrences.length > 1 ? 's' : ''})`,
     );
 
     for (const [file, results] of Object.entries(grouped)) {
@@ -66,14 +70,14 @@ function showColorWithLines(colorMap: ColorMap) {
 function showColorWithFiles(colorMap: ColorMap) {
   const found = Object.keys(colorMap);
 
-  console.log(`Found ${chalk.yellow.bold(found.length)} Tailwind colors:\n`);
+  console.log(`Found ${highlightNumber(found.length)} Tailwind colors:\n`);
 
   for (const color of found) {
     const files = colorMap[color].map((occurrence) => occurrence.file);
     const uniqueFiles = new Set(files);
 
     console.log(
-      `\nColor: ${color} (found in ${chalk.yellow.bold(uniqueFiles.size)} file${uniqueFiles.size > 1 ? 's' : ''})`,
+      `\nColor: ${color} (found in ${highlightNumber(uniqueFiles.size)} file${uniqueFiles.size > 1 ? 's' : ''})`,
     );
 
     for (const file of uniqueFiles) {
