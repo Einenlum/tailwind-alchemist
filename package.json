@@ -2,7 +2,7 @@
   "name": "tw-alchemist",
   "version": "1.0.0",
   "bin": {
-    "tw-alchemist": "./dist/index.js"
+    "tw-alchemist": "dist/index.js"
   },
   "description": "",
   "main": "index.js",
