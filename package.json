@@ -14,12 +14,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^12.1.0",
-    "fast-glob": "^3.3.2"
+    "fast-glob": "^3.3.2",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@types/commander": "^2.12.5",
     "@types/node": "^22.10.2",
+    "@types/yargs": "^17.0.33",
     "typescript": "^5.7.2"
   }
 }
