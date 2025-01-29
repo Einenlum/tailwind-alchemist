@@ -52,18 +52,24 @@ npx tw-alchemist scan -p 'resources/views/**' -v
 npx tw-alchemist scan -p 'resources/views/**' -vv
 ```
 
-## Replace Colors
+### Scan for a specific color (even a custom one)
+
+```bash
+npx tw-alchemist scan indigo-800 -p 'resources/views/**' -vv
+```
+
+### Replace Colors
 
 To replace an existing color with another one:
 
 ```bash
-npx tw-alchemist replace oldColor newColor -p 'resources/views/**' -p 'some/other/folder/**'
+npx tw-alchemist replace oldColor newColor -p 'resources/views/**'
 ```
 
 To check what would be done without touching files, use `--dry-run`:
 
 ```bash
-npx tw-alchemist replace oldColor newColor -p 'resources/views/**' -p 'some/other/folder/**' --dry-run
+npx tw-alchemist replace oldColor newColor -p 'resources/views/**' --dry-run
 ```
 
 Notes:
