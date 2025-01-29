@@ -41,13 +41,15 @@ function showColorWithLines(colorMap: ColorMap) {
   console.log(`Found ${found.length} Tailwind colors:\n`);
 
   for (const color of found) {
-    console.log(`\nColor: ${color}`);
-
     const occurrences = colorMap[color];
 
     const grouped = groupBy(
       occurrences,
       (occurence: ColorOccurrence) => occurence.file,
+    );
+
+    console.log(
+      `\nColor: ${color} (${occurrences.length} occurrence${occurrences.length > 1 ? 's' : ''})`,
     );
 
     for (const [file, results] of Object.entries(grouped)) {
@@ -65,10 +67,12 @@ function showColorWithFiles(colorMap: ColorMap) {
   console.log(`Found ${found.length} Tailwind colors:\n`);
 
   for (const color of found) {
-    console.log(`\nColor: ${color}`);
-
     const files = colorMap[color].map((occurrence) => occurrence.file);
     const uniqueFiles = new Set(files);
+
+    console.log(
+      `\nColor: ${color} (found in ${uniqueFiles.size} file${uniqueFiles.size > 1 ? 's' : ''})`,
+    );
 
     for (const file of uniqueFiles) {
       console.log(`  - ${file}`);
