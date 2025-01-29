@@ -9,6 +9,7 @@ A CLI tool to manage and replace Tailwind CSS colors in your project.<br />Built
 <br/>
 <br/>
 </p>
+<img src="images/demo.gif" alt="Logo" width="480">
 </div>
 
 If you’ve ever wanted to:
