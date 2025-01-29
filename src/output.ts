@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 import {
   ColorMap,
   ColorOccurrence,
@@ -28,7 +30,7 @@ function showSimpleColors(colorMap: ColorMap) {
 
   found.sort();
 
-  console.log(`Found ${found.length} Tailwind colors:\n`);
+  console.log(`Found ${chalk.yellow(found.length)} Tailwind colors:\n`);
 
   for (const color of found) {
     console.log(color);
@@ -38,7 +40,7 @@ function showSimpleColors(colorMap: ColorMap) {
 function showColorWithLines(colorMap: ColorMap) {
   const found = Object.keys(colorMap);
 
-  console.log(`Found ${found.length} Tailwind colors:\n`);
+  console.log(`Found ${chalk.yellow(found.length)} Tailwind colors:\n`);
 
   for (const color of found) {
     const occurrences = colorMap[color];
@@ -49,11 +51,11 @@ function showColorWithLines(colorMap: ColorMap) {
     );
 
     console.log(
-      `\nColor: ${color} (${occurrences.length} occurrence${occurrences.length > 1 ? 's' : ''})`,
+      `\nColor: ${color} (${chalk.yellow(occurrences.length)} occurrence${occurrences.length > 1 ? 's' : ''})`,
     );
 
     for (const [file, results] of Object.entries(grouped)) {
-      console.log(`  - ${file}`);
+      console.log(`  - ${chalk.yellow(file)}`);
       for (const result of results) {
         console.log(`    - Line ${result.line}: ${result.match}`);
       }
@@ -64,14 +66,14 @@ function showColorWithLines(colorMap: ColorMap) {
 function showColorWithFiles(colorMap: ColorMap) {
   const found = Object.keys(colorMap);
 
-  console.log(`Found ${found.length} Tailwind colors:\n`);
+  console.log(`Found ${chalk.yellow(found.length)} Tailwind colors:\n`);
 
   for (const color of found) {
     const files = colorMap[color].map((occurrence) => occurrence.file);
     const uniqueFiles = new Set(files);
 
     console.log(
-      `\nColor: ${color} (found in ${uniqueFiles.size} file${uniqueFiles.size > 1 ? 's' : ''})`,
+      `\nColor: ${color} (found in ${chalk.yellow(uniqueFiles.size)} file${uniqueFiles.size > 1 ? 's' : ''})`,
     );
 
     for (const file of uniqueFiles) {
@@ -115,16 +117,19 @@ export function newLineToAddInCss(
     ] ?? null;
 
   const prefixText = dryRun
-    ? 'You would then add this to your CSS file:'
-    : 'You now must add this to your CSS file:';
+    ? '\nYou would then add this to your CSS file:'
+    : '\nYou now must add this to your CSS file:';
+
+  const cssTheme = `@theme {
+    /* ... */
+    --color-${newColorClass}: ${oklchValue ?? '<value>'};
+}`;
+
   return (
     prefixText +
     `
 
-@theme {
-    /* ... */
-    --color-${newColorClass}: ${oklchValue ?? '<value>'};
-}
+${chalk.yellow(cssTheme)}
 `
   );
 }

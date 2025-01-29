@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs';
+import chalk from 'chalk';
 import { hideBin } from 'yargs/helpers';
 import { scanColors } from './scanner';
 import { replaceColor } from './replacer';
@@ -135,12 +136,12 @@ yargs(parsedArgs)
 
       console.log(
         dryRun
-          ? `Would update ${visitedFiles.size} files:`
-          : `Updated ${visitedFiles.size} files:`,
+          ? `\nWould update ${chalk.yellow(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`
+          : `\nUpdated ${chalk.yellow(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`,
       );
 
       for (const file of visitedFiles) {
-        console.log(`  - ${file}`);
+        console.log(`  - ${chalk.yellow(file)}`);
       }
 
       if (!(newColorClass in TAILWIND_DEFAULT_COLORS)) {

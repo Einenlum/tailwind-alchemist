@@ -1,6 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+import chalk from 'chalk';
+
 import { ColorOccurrence } from './types';
 import { TAILWIND_DEFAULT_COLORS, getTailwindColorRegex } from './regexes';
 import { checkFileExists } from './utils';
@@ -42,11 +44,11 @@ export async function replaceColor(
     if (!dryRun) {
       await fs.writeFile(filePath, content, { encoding: 'utf-8' });
       console.log(
-        `Replaced "${oldColorClass}" => "${newColorClass}" in ${occ.file}`,
+        `Replaced "${oldColorClass}" => "${newColorClass}" in ${chalk.yellow(occ.file)}`,
       );
     } else {
       console.log(
-        `Would replace "${oldColorClass}" => "${newColorClass}" in ${occ.file}`,
+        `Would replace "${oldColorClass}" => "${newColorClass}" in ${chalk.yellow(occ.file)}`,
       );
     }
   }
