@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { ColorOccurrence } from './types';
 import { TAILWIND_DEFAULT_COLORS, getTailwindColorRegex } from './regexes';
 
