@@ -95,7 +95,7 @@ program
     const colorMap = await scanColors(globs, oldColorClass);
 
     // Replace and update config
-    const visitedFiles = replaceColor(
+    const visitedFiles = await replaceColor(
       colorMap[oldColorClass] ?? [],
       oldColorClass,
       newColorClass,

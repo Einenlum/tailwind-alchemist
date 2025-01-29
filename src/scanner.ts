@@ -1,7 +1,9 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import fg from 'fast-glob';
+
+import { checkFileExists } from './utils';
 
 import {
   FULL_RANGE_REGEX as fullRangeRegex,
@@ -25,10 +27,10 @@ export async function scanColors(
 
   // 2. For each file, read line by line, match our regex, record the occurrences
   for (const file of files) {
-    if (!fs.existsSync(file)) {
+    if (!(await checkFileExists(file))) {
       continue;
     }
-    const content = fs.readFileSync(file, 'utf-8');
+    const content = await fs.readFile(file, 'utf-8');
     const lines = content.split('\n');
 
     lines.forEach((line, index) => {

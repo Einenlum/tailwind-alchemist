@@ -1,12 +1,14 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
+
 import { ColorOccurrence } from './types';
 import { TAILWIND_DEFAULT_COLORS, getTailwindColorRegex } from './regexes';
+import { checkFileExists } from './utils';
 
 /**
  * Replaces all occurrences of a color class (e.g. "text-gray-800") with a new one (e.g. "text-foobar").
  */
-export function replaceColor(
+export async function replaceColor(
   occurrences: ColorOccurrence[],
   oldColorClass: string,
   newColorClass: string,
@@ -20,11 +22,11 @@ export function replaceColor(
     if (visitedFiles.has(filePath)) continue;
     visitedFiles.add(filePath);
 
-    if (!fs.existsSync(filePath)) {
+    if (!(await checkFileExists(filePath))) {
       continue;
     }
 
-    let content = fs.readFileSync(filePath, 'utf-8');
+    let content = await fs.readFile(filePath, { encoding: 'utf-8' });
 
     const regex = getTailwindColorRegex(oldColorClass);
 
@@ -38,7 +40,7 @@ export function replaceColor(
     }
 
     if (!dryRun) {
-      fs.writeFileSync(filePath, content, 'utf-8');
+      await fs.writeFile(filePath, content, { encoding: 'utf-8' });
       console.log(
         `Replaced "${oldColorClass}" => "${newColorClass}" in ${occ.file}`,
       );
