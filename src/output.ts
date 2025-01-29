@@ -28,7 +28,7 @@ function showSimpleColors(colorMap: ColorMap) {
 
   found.sort();
 
-  console.log('Colors:\n');
+  console.log(`Found ${found.length} Tailwind colors:\n`);
 
   for (const color of found) {
     console.log(color);
@@ -37,6 +37,8 @@ function showSimpleColors(colorMap: ColorMap) {
 
 function showColorWithLines(colorMap: ColorMap) {
   const found = Object.keys(colorMap);
+
+  console.log(`Found ${found.length} Tailwind colors:\n`);
 
   for (const color of found) {
     console.log(`\nColor: ${color}`);
@@ -59,6 +61,8 @@ function showColorWithLines(colorMap: ColorMap) {
 
 function showColorWithFiles(colorMap: ColorMap) {
   const found = Object.keys(colorMap);
+
+  console.log(`Found ${found.length} Tailwind colors:\n`);
 
   for (const color of found) {
     console.log(`\nColor: ${color}`);
