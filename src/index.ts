@@ -136,8 +136,8 @@ yargs(parsedArgs)
 
       console.log(
         dryRun
-          ? `\nWould update ${chalk.yellow(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`
-          : `\nUpdated ${chalk.yellow(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`,
+          ? `\nWould update ${chalk.yellow.bold(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`
+          : `\nUpdated ${chalk.yellow.bold(visitedFiles.size)} file${visitedFiles.size > 1 ? 's' : ''}:`,
       );
 
       for (const file of visitedFiles) {
