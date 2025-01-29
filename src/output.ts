@@ -158,10 +158,13 @@ export function newLineToAddInCss(
   newColorClass: string,
   dryRun: boolean,
 ) {
-  const oklchValue =
-    TAILWIND_DEFAULT_COLORS[
-      oldColorClass as keyof typeof TAILWIND_DEFAULT_COLORS
-    ] ?? null;
+  const isNativeColor = oldColorClass in TAILWIND_DEFAULT_COLORS;
+
+  const oklchValue = isNativeColor
+    ? TAILWIND_DEFAULT_COLORS[
+        oldColorClass as keyof typeof TAILWIND_DEFAULT_COLORS
+      ]
+    : null;
 
   const prefixText = dryRun
     ? '\nYou would then add this to your CSS file:'
@@ -170,13 +173,24 @@ export function newLineToAddInCss(
   const cssTheme = `@theme {
     /* ... */
     --color-${newColorClass}: ${oklchValue ?? '<value>'};
-}`;
+`;
+
+  let finalCssTheme = cssTheme;
+
+  if (isNativeColor) {
+    finalCssTheme =
+      cssTheme +
+      `    /* or */
+    --color-${newColorClass}: var(--color-${oldColorClass});
+`;
+  }
+
+  finalCssTheme = finalCssTheme + '}';
 
   return (
     prefixText +
     `
 
-${chalk.yellow(cssTheme)}
-`
+${chalk.yellow(finalCssTheme)}`
   );
 }
