@@ -6,6 +6,7 @@ import chalk from 'chalk';
 import { ColorOccurrence } from './types';
 import { TAILWIND_DEFAULT_COLORS, getTailwindColorRegex } from './regexes';
 import { checkFileExists } from './utils';
+import { printColor } from './output';
 
 /**
  * Replaces all occurrences of a color class (e.g. "text-gray-800") with a new one (e.g. "text-foobar").
@@ -44,11 +45,11 @@ export async function replaceColor(
     if (!dryRun) {
       await fs.writeFile(filePath, content, { encoding: 'utf-8' });
       console.log(
-        `Replaced "${oldColorClass}" => "${newColorClass}" in ${chalk.yellow(occ.file)}`,
+        `Replaced "${printColor(oldColorClass)}" => "${printColor(newColorClass)}" in ${chalk.yellow(occ.file)}`,
       );
     } else {
       console.log(
-        `Would replace "${oldColorClass}" => "${newColorClass}" in ${chalk.yellow(occ.file)}`,
+        `Would replace "${printColor(oldColorClass)}" => "${printColor(newColorClass)}" in ${chalk.yellow(occ.file)}`,
       );
     }
   }

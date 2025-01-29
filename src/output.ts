@@ -7,9 +7,52 @@ import {
   VERBOSE_LEVELS,
 } from './types';
 import { TAILWIND_DEFAULT_COLORS } from './regexes';
+import {
+  decomposeOklchString,
+  oklchToHex,
+  isLightColor,
+  getContrastingBackground,
+} from './utils';
 
 export function highlightNumber(value: string | number) {
   return chalk.yellow.bold(value);
+}
+
+function getColorChalk(colorClass: string) {
+  const oklchValue =
+    TAILWIND_DEFAULT_COLORS[
+      colorClass as keyof typeof TAILWIND_DEFAULT_COLORS
+    ] ?? null;
+
+  if (!oklchValue) {
+    return chalk.gray;
+  }
+
+  if (oklchValue) {
+    try {
+      // if oklchValue starts with #
+      if (oklchValue.startsWith('#')) {
+        const hex = oklchValue;
+        const bgHex = hex.replace('#', '#99');
+        return chalk.hex(hex).bgHex(bgHex);
+      }
+
+      const { l, c, h } = decomposeOklchString(oklchValue);
+      const hex = oklchToHex(l, c, h);
+
+      return chalk.bgHex(getContrastingBackground(l)).hex(hex);
+    } catch (error) {
+      return chalk.gray;
+    }
+  }
+
+  return chalk.bgGray;
+}
+
+export function printColor(color: string) {
+  const colorChalk = getColorChalk(color);
+
+  return colorChalk(color);
 }
 
 function groupBy<T, K extends keyof any>(
@@ -37,7 +80,7 @@ function showSimpleColors(colorMap: ColorMap) {
   console.log(`Found ${highlightNumber(found.length)} Tailwind colors:\n`);
 
   for (const color of found) {
-    console.log(color);
+    console.log(printColor(color));
   }
 }
 
@@ -55,7 +98,7 @@ function showColorWithLines(colorMap: ColorMap) {
     );
 
     console.log(
-      `\nColor: ${color} (${highlightNumber(occurrences.length)} occurrence${occurrences.length > 1 ? 's' : ''})`,
+      `\nColor: ${printColor(color)} (${highlightNumber(occurrences.length)} occurrence${occurrences.length > 1 ? 's' : ''})`,
     );
 
     for (const [file, results] of Object.entries(grouped)) {
@@ -77,11 +120,11 @@ function showColorWithFiles(colorMap: ColorMap) {
     const uniqueFiles = new Set(files);
 
     console.log(
-      `\nColor: ${color} (found in ${highlightNumber(uniqueFiles.size)} file${uniqueFiles.size > 1 ? 's' : ''})`,
+      `\nColor: ${printColor(color)} (found in ${highlightNumber(uniqueFiles.size)} file${uniqueFiles.size > 1 ? 's' : ''})`,
     );
 
     for (const file of uniqueFiles) {
-      console.log(`  - ${file}`);
+      console.log(`  - ${chalk.yellow(file)}`);
     }
   }
 }
