@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@4.0.0/dist/tailwind.min.css"
+  />
+  <title>Amazing Tailwind CSS</title>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- NAVIGATION -->
+  <nav class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-indigo-600">
+        Tailwind <span class="text-gray-900">Magic</span>
+      </a>
+      <div>
+        <a
+          href="#features"
+          class="text-gray-600 hover:text-indigo-600 ml-4 transition-colors"
+          >Features</a
+        >
+        <a
+          href="#testimonials"
+          class="text-gray-600 hover:text-indigo-600 ml-4 transition-colors"
+          >Testimonials</a
+        >
+        <a
+          href="#learn-more"
+          class="bg-indigo-600 text-white px-4 py-2 rounded ml-4 hover:bg-indigo-700 transition-colors"
+          >Learn More</a
+        >
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header
+    class="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white py-16"
+  >
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+        The Power of Tailwind CSS
+      </h1>
+      <p class="text-xl sm:text-2xl mb-8">
+        Craft beautiful, modern, and responsive designs with ease
+      </p>
+      <a
+        href="#learn-more"
+        class="inline-block bg-white text-indigo-600 px-6 py-3 rounded font-semibold shadow-lg hover:bg-gray-200 transition-colors"
+      >
+        Discover More
+      </a>
+    </div>
+  </header>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+          Why Tailwind CSS?
+        </h2>
+        <p class="text-gray-600 text-lg">
+          Explore what makes Tailwind CSS so special for developers and designers.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="text-indigo-600 mb-4 text-5xl">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Utility-First</h3>
+          <p class="text-gray-600">
+            Tailwind provides low-level utility classes that let you build
+            fully custom designs without ever leaving your HTML.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="text-indigo-600 mb-4 text-5xl">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Faster Workflow</h3>
+          <p class="text-gray-600">
+            Save time by rapidly building out designs using small, single-purpose 
+            classes—no need to write extensive CSS from scratch.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="text-indigo-600 mb-4 text-5xl">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Responsive Design</h3>
+          <p class="text-gray-600">
+            Create responsive layouts easily with Tailwind’s mobile-first 
+            approach and well-thought-out breakpoints.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="text-indigo-600 mb-4 text-5xl">
+            <i class="fas fa-adjust"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Customizable</h3>
+          <p class="text-gray-600">
+            Tailwind is highly configurable. Extend or override default 
+            theme values and create custom utility classes easily.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="text-indigo-600 mb-4 text-5xl">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Design Consistency</h3>
+          <p class="text-gray-600">
+            Enforce consistent design across your entire project using 
+            pre-defined color palettes, typographic scales, and spacing units.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="text-indigo-600 mb-4 text-5xl">
+            <i class="fas fa-smile"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Developer Happiness</h3>
+          <p class="text-gray-600">
+            Spend more time being creative and less time fighting with 
+            CSS. Tailwind’s utility-first approach is a joy to work with.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+          Testimonials
+        </h2>
+        <p class="text-gray-600 text-lg">
+          See why developers worldwide are loving Tailwind CSS.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-gray-600 italic mb-4">
+            "Tailwind CSS has drastically improved my workflow. The utility-first 
+            approach means I can focus on creating awesome UIs without 
+            wrangling with complex CSS."
+          </p>
+          <div class="flex items-center">
+            <img
+              src="https://via.placeholder.com/50"
+              alt="Profile Picture"
+              class="w-12 h-12 rounded-full mr-4"
+            />
+            <div>
+              <h4 class="text-gray-800 font-bold">Jane Doe</h4>
+              <span class="text-sm text-gray-500">Frontend Engineer</span>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-gray-600 italic mb-4">
+            "I was skeptical at first, but once I tried Tailwind, I never 
+            looked back. It's intuitive, powerful, and saves me so much time!"
+          </p>
+          <div class="flex items-center">
+            <img
+              src="https://via.placeholder.com/50"
+              alt="Profile Picture"
+              class="w-12 h-12 rounded-full mr-4"
+            />
+            <div>
+              <h4 class="text-gray-800 font-bold">John Smith</h4>
+              <span class="text-sm text-gray-500">Full-stack Developer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARN MORE / CTA SECTION -->
+  <section id="learn-more" class="bg-indigo-600 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Ready to Supercharge Your CSS?
+      </h2>
+      <p class="text-lg mb-8">
+        Jump in and experience the freedom of building with Tailwind CSS!
+      </p>
+      <a
+        href="https://tailwindcss.com/docs"
+        target="_blank"
+        rel="noreferrer"
+        class="inline-block bg-white text-indigo-600 px-6 py-3 rounded font-semibold shadow-lg hover:bg-gray-200 transition-colors"
+      >
+        Visit Tailwind Docs
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-gray-300 py-6">
+    <div class="container mx-auto px-4 text-center">
+      <p class="mb-2">&copy; 2025 Tailwind Magic. All rights reserved.</p>
+      <p>
+        Built with <span class="text-indigo-500">&hearts;</span> and
+        <a
+          href="https://tailwindcss.com/"
+          target="_blank"
+          rel="noreferrer"
+          class="text-indigo-400 hover:text-indigo-300 underline"
+          >Tailwind CSS</a
+        >.
+      </p>
+    </div>
+  </footer>
+  
+</body>
+</html>

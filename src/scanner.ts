@@ -9,7 +9,44 @@ import {
   FULL_RANGE_REGEX as fullRangeRegex,
   getTailwindColorRegex,
 } from './regexes';
-import { ColorMap } from './types';
+import { ColorMap, ColorOccurrence } from './types';
+
+export async function scanFile(
+  filePath: string,
+  regex: RegExp,
+): Promise<ColorOccurrence[]> {
+  if (!(await checkFileExists(filePath))) {
+    return [];
+  }
+
+  const content = await fs.readFile(filePath, 'utf-8');
+  const lines = content.split('\n');
+
+  const occurrences: ColorOccurrence[] = [];
+
+  lines.forEach((line, index) => {
+    // Match all color classes on this line
+    const matches = line.matchAll(regex);
+    for (const match of matches) {
+      // match[0] is the entire matched string (e.g. "hover:text-red-500")
+      const colorClass = match[0];
+      const color = match.groups?.color;
+
+      if (!color) {
+        continue;
+      }
+
+      occurrences.push({
+        file: path.relative(process.cwd(), filePath),
+        line: index + 1,
+        match: colorClass,
+        color: color,
+      });
+    }
+  });
+
+  return occurrences;
+}
 
 /**
  * Scan an array of file patterns
@@ -27,37 +64,15 @@ export async function scanColors(
 
   // 2. For each file, read line by line, match our regex, record the occurrences
   for (const file of files) {
-    if (!(await checkFileExists(file))) {
-      continue;
-    }
-    const content = await fs.readFile(file, 'utf-8');
-    const lines = content.split('\n');
+    const occurrences = await scanFile(file, regex);
 
-    lines.forEach((line, index) => {
-      // Match all color classes on this line
-      const matches = line.matchAll(regex);
-      for (const match of matches) {
-        // match[0] is the entire matched string (e.g. "hover:text-red-500")
-        const colorClass = match[0];
-        const color = match.groups?.color;
-
-        if (!color) {
-          continue;
-        }
-
-        // If we haven't seen this colorClass yet, initialize
-        if (!colorMap[color]) {
-          colorMap[color] = [];
-        }
-
-        colorMap[color].push({
-          file: path.relative(process.cwd(), file),
-          line: index + 1,
-          match: colorClass,
-          color: color,
-        });
+    for (const occurrence of occurrences) {
+      if (!colorMap[occurrence.color]) {
+        colorMap[occurrence.color] = [];
       }
-    });
+
+      colorMap[occurrence.color].push(occurrence);
+    }
   }
 
   return colorMap;

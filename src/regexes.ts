@@ -303,6 +303,10 @@ const TAILWIND_COLOR_UTILITIES = [
   'caret',
   'fill',
   'stroke',
+
+  // missing in the docs, for gradients
+  'from',
+  'to',
 ];
 
 const allColors = Object.keys(TAILWIND_DEFAULT_COLORS).join('|');
