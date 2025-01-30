@@ -4,19 +4,28 @@
 <img src="images/logo.png" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">Tailwind Alchemist 🪄</h3>
+
+<div align="center">
+    <img src="https://github.com/einenlum/tailwind-alchemist/actions/workflows/node.js.yml/badge.svg" alt="CI Badge" width="120">
+    <br/>
+    <br />
+</div>
+
 <p align="center">
 A CLI tool to manage and replace Tailwind CSS colors in your project.<br />Built for developers who want to keep their Tailwind color usage clean and consistent.
 <br/>
 <br/>
 </p>
 <img src="images/demo.gif" alt="Logo" width="480">
+<br/>
 </div>
 
-If you’ve ever wanted to:
-- **Check all the Tailwind default colors** used in your project.
-- **Replace existing colors** with new ones while maintaining consistency.
+Common use case:
 
-...then **Tailwind Alchemist** is for you 🪄
+- You find a great starter kit for your project, but you realize that **all Tailwind colors are hardcoded** in the templates.
+- You would like to **extract them in a custom CSS file** to change them easily in the future and maintain consistency. But it takes a lot of time.
+
+**Tailwind Alchemist** has got you covered! ✨
 
 ---
 
