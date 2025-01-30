@@ -94,6 +94,8 @@ Only compatible with TailwindCSS 4.x.
 
 Should work more or less on TailwindCSS 3.x.
 
+Tested with Node 18.x, 20.x, and 22.x.
+
 ## Disclaimer
 
 This tool is **not** affiliated with Tailwind CSS or its creators. It’s a personal project built to help developers manage their Tailwind CSS colors.
