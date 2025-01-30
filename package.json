@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "@types/commander": "^2.12.5",
     "@types/node": "^22.10.2",
     "@types/yargs": "^17.0.33",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.4"
   }
 }

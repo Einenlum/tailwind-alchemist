@@ -1,0 +1,10 @@
+# Source files
+src/
+
+# Test files
+tests/
+
+# Image files
+images/
+
+tsconfig.json
