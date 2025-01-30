@@ -20,12 +20,12 @@ A CLI tool to manage and replace Tailwind CSS colors in your project.<br />Built
 <br/>
 </div>
 
-Common use case:
+**A common use case:**
 
-- You find a great starter kit for your project, but you realize that **all Tailwind colors are hardcoded** in the templates.
-- You would like to **extract them in a custom CSS file** to change them easily in the future and maintain consistency. But it takes a lot of time.
+- You find a great starter kit for your project, but then you realize that **all the Tailwind colors are hardcoded** into the templates.
+- You want to **extract them into a custom CSS file** so you can easily change them in the future and maintain consistency. However, doing so can be time-consuming.
 
-**Tailwind Alchemist** has got you covered! ✨
+**Tailwind Alchemist** has you covered! ✨
 
 ---
 
