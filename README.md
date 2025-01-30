@@ -93,9 +93,17 @@ This tool is **not** affiliated with Tailwind CSS or its creators. It’s a pers
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
+## Tests
+
+After installing the project locally (`npm install`), you can run the tests with:
+
+```bash
+npm run test
+```
+
 ## Author
 
-Yann Rabiller ([@einenlum](https://github.com/Einenlum/)). You can check my [blog](https://www.einenlum.com) and my [book](https://www.einenlum.com/book) _From PHP to Python_.
+Yann Rabiller ([@einenlum](https://github.com/Einenlum/)). You can check my [blog](https://www.einenlum.com) and my [book](https://fromphptopython.com) _From PHP to Python_.
 
 ## License
 
